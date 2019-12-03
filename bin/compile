@@ -17,8 +17,6 @@ APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
 (
     rm "${BUILD_DIR}/${APP_BASE}/imports/shared" &&
     mv "${BUILD_DIR}/shared/imports" "${BUILD_DIR}/${APP_BASE}/imports/shared" &&
-    rm "${BUILD_DIR}/${APP_BASE}/imports/ui" &&
-    mv "${BUILD_DIR}/admin/imports/ui" "${BUILD_DIR}/${APP_BASE}/imports/ui" &&
     mv "${BUILD_DIR}/${APP_BASE}" "${STAGE}" &&
     rm -rf "${BUILD_DIR}" &&
     mv "${STAGE}/$(basename "$APP_BASE")" "${BUILD_DIR}"
