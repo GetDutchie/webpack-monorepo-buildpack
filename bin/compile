@@ -17,8 +17,10 @@ if [ ! -f "${ENV_DIR}/APP_BASE" ]; then
     exit 1
 fi
 APP_BASE="$(cat "${ENV_DIR}/APP_BASE")"
+CURRENT_VERSION_JSON="{ \"version\": \"$SOURCE_VERSION\" }"
 
 (
+    echo $CURRENT_VERSION_JSON | cat > "${BUILD_DIR}/${APP_BASE}/version.json" &&
     rm "${BUILD_DIR}/${APP_BASE}/shared" &&
     mv "${BUILD_DIR}/shared" "${BUILD_DIR}/${APP_BASE}/shared" &&
     mv "${BUILD_DIR}/${APP_BASE}" "${STAGE}" &&
